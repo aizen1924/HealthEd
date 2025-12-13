@@ -1,0 +1,255 @@
+// --- Variables ---
+$dark-blue: #1B3A57; // Main Theme Color
+$bg-white: #ffffff;
+$light-grey: #f4f6f8;
+$text-dark: #2A2A2A;
+$danger-red: #e74c3c; // Kept for specific warnings
+
+// --- Global Page Styling ---
+ion-content.fever-bg {
+  --background: #{$bg-white};
+}
+
+.custom-toolbar {
+  --background: #{$dark-blue};
+  --color: white;
+  --border-width: 0;
+  padding-top: 5px;
+  
+  ion-title {
+    font-weight: 700;
+  }
+}
+
+// --- Responsive Layout Wrapper ---
+.main-wrapper {
+  display: flex;
+  flex-direction: column; 
+  
+  // DESKTOP / WEB VIEW
+  @media (min-width: 900px) {
+    flex-direction: row; 
+    max-width: 1200px;
+    margin: 40px auto; 
+    align-items: flex-start;
+    gap: 40px;
+    padding: 0 20px;
+  }
+}
+
+// --- Columns ---
+.context-column {
+  width: 100%;
+  
+  @media (min-width: 900px) {
+    width: 40%; 
+    position: sticky;
+    top: 20px; 
+  }
+}
+
+.action-column {
+  width: 100%;
+
+  @media (min-width: 900px) {
+    width: 60%; 
+  }
+}
+
+// --- Hero Section ---
+.hero-section {
+  background: $dark-blue; // Solid Dark Blue
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-bottom: 25px;
+  position: relative;
+  overflow: hidden;
+
+  // Desktop adjustment
+  @media (min-width: 900px) {
+    border-radius: 30px; 
+  }
+
+  .icon-glow {
+    background: rgba(255,255,255,0.15);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main-icon {
+    font-size: 50px;
+    color: white;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 8px;
+    letter-spacing: 0.5px;
+  }
+  p {
+    margin: 0 auto;
+    opacity: 0.95;
+    font-size: 1rem;
+    max-width: 80%;
+    line-height: 1.5;
+  }
+}
+
+// --- Titles ---
+.section-title {
+  padding: 0 20px;
+  margin-bottom: 15px;
+  
+  h3 {
+    font-weight: 800;
+    color: $dark-blue; // Updated to Dark Blue
+    font-size: 1.2rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+// --- Warning Card ---
+.warning {
+  margin: 0 20px 20px;
+  border-radius: 20px;
+  background: white;
+  border: 1px solid #eee; // Clean border
+  box-shadow: none;
+
+  ion-list {
+    background: transparent;
+    padding: 0;
+  }
+
+  ion-item {
+    --inner-padding-end: 0;
+    margin-bottom: 5px;
+    --background: white; // Force White
+
+    .warn-icon-box {
+      background: rgba(231, 76, 60, 0.1); // Light Red bg for icons
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+
+      ion-icon {
+        color: $danger-red; // Keep red icons for warning context
+        font-size: 20px;
+      }
+    }
+
+    .wrap-text {
+      white-space: normal;
+      font-size: 0.95rem;
+      color: $text-dark;
+      font-weight: 600;
+    }
+  }
+}
+
+// --- Grid Tip Cards (Unified White Style) ---
+.tip-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px 20px;
+  text-align: center;
+  height: 100%;
+  // Simple border styling
+  border: 1px solid #eee;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .icon-circle {
+    width: 60px;
+    height: 60px;
+    // Transparent background, Icon handles color
+    background: transparent; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    
+    ion-icon {
+      font-size: 36px;
+      color: $dark-blue; // Unified Dark Blue Icon
+    }
+  }
+
+  h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: $dark-blue; // Unified Dark Blue Text
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+// --- Medicine Card ---
+.med-card {
+  margin: 20px;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid #eee;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  position: relative;
+  overflow: hidden;
+
+  // Blue strip at top
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: $dark-blue;
+  }
+  
+  ion-card-subtitle {
+    color: $dark-blue;
+    opacity: 0.7;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+
+  ion-card-title {
+    color: $text-dark;
+    font-weight: 900;
+  }
+  
+  ion-card-content {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}

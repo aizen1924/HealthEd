@@ -1,0 +1,70 @@
+mutation SeedDemoData @transaction @auth(level: NO_ACCESS) {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      displayName: "demouser1",
+      createdAt: "2024-05-01T00:00:00Z",
+      email: "demouser1@example.com"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      displayName: "demouser2",
+      createdAt: "2024-05-01T00:00:00Z",
+      email: "demouser2@example.com"
+    }
+  ])
+  movieList_insertMany(data: [
+    {
+      id: "650e8400-e29b-41d4-a716-446655440000",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      name: "demouser1's list",
+      createdAt: "2024-05-01T00:00:00Z",
+      updatedAt: "2024-05-01T00:00:00Z",
+      isPublic: true
+    },
+    {
+      id: "650e8400-e29b-41d4-a716-446655440001",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      name: "demouser2's private list",
+      createdAt: "2024-05-01T00:00:00Z",
+      updatedAt: "2024-05-01T00:00:00Z",
+      isPublic: false
+    }
+  ])
+}
+
+query ListPublicMovieLists @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  movieLists(where: {isPublic: {eq: true}}) {
+    id
+    name
+    description
+    user {
+      id
+      displayName
+    }
+  }
+}
+
+mutation CreateReview($movieId: UUID!, $rating: Int!, $review: String!, $watchId: UUID!) @auth(level: USER) {
+  review_insert(data: {
+    movieId: $movieId,
+    rating: $rating,
+    review: $review,
+    watchId: $watchId,
+    userId_expr: "auth.uid",
+    createdAt_expr: "request.time",
+    updatedAt_expr: "request.time"
+  })
+}
+
+query GetMyReviews @auth(level: USER) {
+  reviews(where: {userId: {eq_expr: "auth.uid"}}) {
+    id
+    rating
+    review
+    movie {
+      id
+      title
+    }
+  }
+}

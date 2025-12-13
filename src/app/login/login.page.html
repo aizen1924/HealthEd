@@ -1,0 +1,65 @@
+<ion-content [fullscreen]="true" class="main-bg">
+
+  <div class="login-container">
+    
+    <div class="logo-section">
+      <div class="logo-circle">
+        <img src="assets/hlogo.jpg" alt="HealthEd Logo">
+      </div>
+      <h1 class="app-title">HealthEd</h1>
+      <p class="app-subtitle">Your Gateway to Health</p>
+    </div>
+
+    <div class="login-card">
+      
+      <div class="input-group">
+        <ion-label>Email</ion-label>
+        <ion-item lines="none" class="custom-input">
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-input type="email" placeholder="Enter your email" [(ngModel)]="email"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="input-group">
+        <ion-label>Password</ion-label>
+        <ion-item lines="none" class="custom-input">
+          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+          
+          <ion-input [type]="showPassword ? 'text' : 'password'" placeholder="Enter your password" [(ngModel)]="password"></ion-input>
+          
+          <ion-icon 
+            [name]="showPassword ? 'eye-outline' : 'eye-off-outline'" 
+            slot="end" 
+            class="eye-icon"
+            (click)="togglePassword()">
+          </ion-icon>
+        </ion-item>
+      </div>
+
+      <div class="forgot-pass">
+        <a (click)="forgotPassword()">Forgot Password?</a>
+      </div>
+
+      <ion-button expand="block" class="login-btn" (click)="login()">
+        LOGIN
+      </ion-button>
+
+      <ion-button 
+        *ngIf="isBiometricAvailable" 
+        expand="block" 
+        fill="outline" 
+        class="login-btn ion-margin-top" 
+        (click)="performBiometricLogin()">
+        <ion-icon slot="start" name="finger-print-outline"></ion-icon>
+        Login with Fingerprint
+      </ion-button>
+
+      <div class="signup-link">
+        <p>Don't have an account? <a routerLink="/signup">Sign Up</a></p>
+      </div>
+
+    </div>
+
+  </div>
+
+</ion-content>

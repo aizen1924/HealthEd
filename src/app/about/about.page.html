@@ -1,0 +1,88 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab2" text="" icon="arrow-back-circle" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="serif-title">About HealthEd</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="main-bg">
+
+  <div class="about-wrapper">
+
+    <div class="brand-column">
+      <div class="logo-container">
+        <div class="logo-circle">
+          <img src="assets/hlogo.jpg" alt="HealthEd Logo">
+        </div>
+        <div class="glow-effect"></div>
+      </div>
+      
+      <h1>HealthEd</h1>
+      <p class="tagline">Empowering Healthier Lives</p>
+      <span class="version-badge">v1.0.0</span>
+    </div>
+
+    <div class="content-column">
+      
+      <div class="info-card fade-in-up">
+        <div class="card-header">
+          <div class="icon-box">
+            <ion-icon name="information"></ion-icon>
+          </div>
+          <h3>What is HealthEd?</h3>
+        </div>
+        <p>
+          HealthEd is an interactive mobile application designed to simplify health education for students. 
+          We bridge the gap between complex medical information and daily life through gamified learning and accessible guides.
+        </p>
+      </div>
+
+      <div class="info-card fade-in-up delay-1">
+        <div class="card-header">
+          <div class="icon-box">
+            <ion-icon name="rocket"></ion-icon>
+          </div>
+          <h3>Our Mission</h3>
+        </div>
+        <p>
+          To empower the youth with essential knowledge on Hygiene, First Aid, Nutrition, and Mental Health, 
+          creating a healthier, safer, and more aware generation.
+        </p>
+      </div>
+
+      <div class="info-card team-card fade-in-up delay-2">
+        <div class="card-header">
+          <div class="icon-box">
+            <ion-icon name="code-slash"></ion-icon>
+          </div>
+          <h3>The Creator</h3>
+        </div>
+        
+        <div class="dev-profile">
+          <div class="avatar-ring">
+            <ion-avatar>
+              <img src="https://placehold.co/100x100/1FD61F/ffffff?text=AR" alt="Developer">
+            </ion-avatar>
+          </div>
+          <div class="dev-info">
+            <h4>Ace Rivera</h4>
+            <p class="role">Lead Developer & Designer</p>
+            <div class="social-pills">
+              <ion-badge color="dark">BSIT</ion-badge>
+              <ion-badge color="tertiary">Ionic</ion-badge>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        <p>&copy; 2025 HealthEd. All rights reserved.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</ion-content>

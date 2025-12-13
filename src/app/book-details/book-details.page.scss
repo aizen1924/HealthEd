@@ -1,0 +1,164 @@
+// --- Variables ---
+$dark-blue: #1B3A57; // New Theme Color
+$bg-white: #ffffff;
+$card-tan: #C5A57D;
+$white: #ffffff;
+$text-dark: #2A2A2A;
+
+// --- Background & Global ---
+ion-content.main-content {
+  // Changed gradient to solid white
+  --background: #{$bg-white};
+}
+
+// --- Header Styling ---
+.custom-toolbar {
+  // Changed to solid Dark Blue
+  --background: #{$dark-blue}; 
+  --color: #ffffff;
+  position: relative; // Removed absolute positioning so it sits at the top naturally
+  
+  .serif-title {
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    color: $white;
+    letter-spacing: 0.5px;
+  }
+}
+
+// --- Layout Container ---
+.book-container {
+  min-height: 100%;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  padding: 20px; 
+}
+
+.responsive-grid {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 0;
+  width: 100%;
+  max-width: 500px; 
+  
+  // WEB / TABLET VIEW
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1.2fr;
+    max-width: 900px;
+    background: #f4f4f4; // Light grey container for desktop contrast
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+}
+
+// --- Hero Section (Left/Top) ---
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+
+  .cover-shadow {
+    width: 160px;
+    height: 240px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2); // Softer shadow
+    margin-bottom: 20px;
+    background: #eee;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .category-badge {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: none; // Removed shadow for simplicity
+    border-radius: 15px;
+  }
+}
+
+// --- Details Section (Right/Bottom) ---
+.details-section {
+  background: $card-tan;
+  border-radius: 30px 30px 0 0; 
+  padding: 35px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.1); 
+
+  // WEB Adjustment
+  @media (min-width: 768px) {
+    border-radius: 0; 
+    height: 100%;
+    box-shadow: none;
+  }
+
+  .main-title {
+    color: $dark-blue; // Changed to Dark Blue
+    font-family: 'Georgia', serif;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    margin: 0 0 10px;
+    font-weight: bold;
+  }
+
+  .main-author {
+    color: #4a4a4a;
+    font-size: 1rem;
+    margin: 0 0 20px;
+    font-style: italic;
+  }
+
+  .divider {
+    height: 2px;
+    width: 60px;
+    background-color: rgba(0,0,0, 0.1);
+    margin-bottom: 25px;
+  }
+
+  h3 {
+    color: $dark-blue;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  .description-text {
+    color: #3e2b1e; 
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 30px;
+    white-space: pre-wrap;
+  }
+
+  // --- UPDATED BUTTON (Simplified) ---
+  .read-btn {
+    --background: #{$dark-blue}; // Matches Header
+    --color: $white;
+    --border-radius: 10px;       // Simple radius
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    height: 50px;
+    letter-spacing: 1px;
+    box-shadow: none;            // Removed complex shadow
+  }
+}

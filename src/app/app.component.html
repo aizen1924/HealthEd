@@ -1,0 +1,29 @@
+<ion-app>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  <ion-fab vertical="top" horizontal="end" slot="fixed" style="margin-bottom: 55px;" *ngIf="showFabButton">
+    
+    <ion-fab-button class="color">
+      <ion-icon name="star"></ion-icon>
+    </ion-fab-button>
+    
+    <ion-fab-list side="bottom">
+      
+      <div class="fab-item-container">
+        <ion-label class="fab-label">About</ion-label>
+        <ion-fab-button routerLink="about" class="color">
+          <ion-icon name="person-circle"></ion-icon>
+        </ion-fab-button>
+      </div>
+
+      <div class="fab-item-container">
+        <ion-label class="fab-label">Logout</ion-label>
+        <ion-fab-button color="danger" (click)="logout()">
+          <ion-icon name="log-out"></ion-icon>
+        </ion-fab-button>
+      </div>
+
+    </ion-fab-list>
+
+  </ion-fab>
+</ion-app>

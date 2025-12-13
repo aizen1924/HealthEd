@@ -1,0 +1,73 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <div class="brand-logo">
+        <img src="assets/hlogo.jpg" alt="HealthEd Logo">
+      </div>
+    </ion-buttons>
+    
+    <ion-title class="serif-title">
+      HealthEd
+    </ion-title>
+  </ion-toolbar>
+  
+  <ion-toolbar class="custom-toolbar search-toolbar">
+    <div class="search-container">
+      <ion-searchbar 
+        placeholder="Search books..." 
+        (ionInput)="filterBooks($event)"
+        class="custom-search"
+        mode="ios">
+      </ion-searchbar>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="main-content">
+  
+  <div class="main-wrapper">
+
+    <div class="welcome-container">
+      <div class="welcome-text">
+        <h2>Your Gateway to Health</h2>
+        <p>Explore medical & wellness resources.</p>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h3>Featured Books</h3>
+      <div class="divider"></div>
+    </div>
+
+    <ion-grid class="book-grid">
+      <ion-row>
+        <ion-col size="6" size-sm="4" size-md="4" size-lg="3" *ngFor="let book of displayedBooks">
+          
+          <div class="custom-card" (click)="openBookDetails(book.id)">
+            
+            <ion-button fill="clear" class="bookmark-btn" (click)="toggleBookmark(book); $event.stopPropagation()">
+               <ion-icon slot="icon-only" [name]="isBookmarked(book) ? 'bookmark' : 'bookmark-outline'"></ion-icon>
+            </ion-button>
+
+            <div class="image-wrapper">
+              <img [src]="book.image" alt="Cover" />
+            </div>
+            
+            <div class="card-body">
+              <span class="category-badge">{{ book.category }}</span>
+              <h4 class="book-title">{{ book.title }}</h4>
+              <p class="book-author">by {{ book.author }}</p>
+              
+              <ion-button expand="block" class="explore-btn" (click)="openBookDetails(book.id); $event.stopPropagation()">
+                READ
+              </ion-button>
+            </div>
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,230 @@
+// --- Theme Variables ---
+$dark-blue: #1B3A57; // Header & Button Color
+$bg-white: #ffffff;  // Background
+$card-tan: #fdf6e9;  // Light tan for cards
+$text-dark: #2A2A2A;
+$danger: #ff4d4d;
+
+// --- Main Background ---
+ion-content.main-bg {
+  --background: #{$bg-white};
+}
+
+// --- Header Styling ---
+.custom-toolbar {
+  --background: #{$dark-blue}; 
+  --color: #ffffff; 
+  padding-top: 5px;
+
+  .brand-logo {
+    width: 40px; height: 40px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-left: 10px; margin-right: 5px;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
+    img { width: 100%; height: 100%; object-fit: cover; }
+  }
+
+  .serif-title {
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    padding-left: 5px;
+  }
+}
+
+// --- Responsive Wrapper ---
+.main-wrapper {
+  width: 100%;
+  padding: 10px;
+  
+  @media (min-width: 900px) {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px;
+  }
+}
+
+// --- Page Intro ---
+.page-intro {
+  color: $dark-blue; 
+  margin-bottom: 20px;
+  padding: 10px 10px 0;
+
+  h1 {
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0 5px;
+  }
+  p { margin: 0; opacity: 0.9; font-size: 1rem; }
+}
+
+// --- Empty State Styling ---
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  
+  .empty-card {
+    background: $card-tan; 
+    border-radius: 30px;
+    padding: 40px;
+    text-align: center;
+    color: $dark-blue; 
+    max-width: 400px;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+
+    .icon-circle {
+      width: 100px; height: 100px;
+      background: white;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      
+      ion-icon { font-size: 50px; color: #8d6e4e; }
+    }
+
+    h3 { font-family: 'Georgia', serif; font-size: 1.6rem; margin-bottom: 10px; font-weight: bold; }
+    p { opacity: 0.8; margin-bottom: 30px; line-height: 1.5; }
+
+    // --- UPDATED BUTTON STYLE (SIMPLIFIED) ---
+    .action-btn {
+      --background: #{$dark-blue}; // Changed from Green to Dark Blue
+      --color: white;
+      font-weight: bold;
+      --border-radius: 10px;      // Simple radius
+      --box-shadow: none;         // Removed 3D shadow
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      height: 50px;
+    }
+  }
+}
+
+// --- Grid & Card Styling ---
+.bookmarks-grid {
+  padding: 0;
+}
+
+.sliding-card {
+  margin-bottom: 15px;
+  border-radius: 20px;
+  overflow: hidden; 
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+  background: transparent;
+}
+
+.bookmark-card {
+  --background: #{$card-tan};
+  --padding-start: 15px;
+  --padding-end: 15px;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    --background: lighten($card-tan, 2%);
+    z-index: 2;
+  }
+
+  .card-layout {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+  }
+
+  .book-cover {
+    width: 70px;
+    height: 100px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    
+    img { width: 100%; height: 100%; object-fit: cover; }
+  }
+
+  .book-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .category-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: #8d6e4e;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .book-title {
+      color: $text-dark;
+      font-family: 'Georgia', serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      line-height: 1.2;
+      margin: 0 0 5px;
+    }
+
+    .book-author {
+      color: #666;
+      font-style: italic;
+      font-size: 0.9rem;
+      margin: 0 0 10px;
+    }
+
+    .read-link {
+      --padding-start: 0;
+      color: $dark-blue; // Changed to match theme
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      margin: 0;
+      height: 20px;
+      justify-content: flex-start;
+      
+      ion-icon { font-size: 1rem; margin-left: 5px; }
+    }
+  }
+
+  // The Quick Delete Button
+  .quick-delete-btn {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    --color: #ff6b6b;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+      --color: #ff0000;
+    }
+  }
+}
+
+// --- Slide Option (Mobile) ---
+.delete-slide-option {
+  --background: #ff4d4d;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  ion-icon { font-size: 1.5rem; }
+}

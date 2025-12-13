@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="serif-title">Book Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="main-content">
+  <div class="book-container" *ngIf="book">
+    
+    <div class="responsive-grid">
+      
+      <div class="hero-section">
+        <div class="cover-wrapper">
+          <div class="cover-shadow">
+            <img [src]="book.image" alt="Book Cover" />
+          </div>
+        </div>
+        
+        <ion-badge color="warning" class="category-badge">{{ book.category }}</ion-badge>
+      </div>
+
+      <div class="details-section">
+        <div class="text-content">
+          <h1 class="main-title">{{ book.title }}</h1>
+          <p class="main-author">By {{ book.author }}</p>
+
+          <div class="divider"></div>
+
+          <h3>Synopsis</h3>
+          <p class="description-text">
+            {{ book.description }}
+          </p>
+        </div>
+
+        <div class="action-area">
+          <ion-button expand="block" class="read-btn" shape="round" (click)="startReading()">
+            Start Reading
+            <ion-icon slot="end" name="book-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</ion-content>

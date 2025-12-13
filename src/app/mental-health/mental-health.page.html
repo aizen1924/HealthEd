@@ -1,0 +1,148 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1" text="" icon="arrow-back-circle"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mental Health 101</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="mind-bg">
+
+  <div class="responsive-wrapper">
+
+    <div class="left-pane">
+      <div class="hero-section">
+        <div class="floating-icon">
+          <ion-icon name="happy" class="main-icon"></ion-icon>
+        </div>
+        <h1>Your Mind Matters</h1>
+        <p>It's okay not to be okay. Your mental health is just as important as your physical health.</p>
+      </div>
+
+      <div class="section-title">
+        <h3>😰 Am I Stressed?</h3>
+      </div>
+      
+      <ion-card class="check-card">
+        <ion-card-content>
+          <ion-list lines="none">
+            <ion-item>
+              <div class="icon-box">
+                <ion-icon name="bed"></ion-icon>
+              </div>
+              <ion-label class="wrap-text">Trouble sleeping or oversleeping</ion-label>
+            </ion-item>
+            <ion-item>
+              <div class="icon-box">
+                <ion-icon name="thunderstorm"></ion-icon>
+              </div>
+              <ion-label class="wrap-text">Feeling easily irritated or angry</ion-label>
+            </ion-item>
+            <ion-item>
+              <div class="icon-box">
+                <ion-icon name="battery-dead"></ion-icon>
+              </div>
+              <ion-label class="wrap-text">Feeling tired all the time</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+
+      <div class="desktop-footer">
+        <div class="footer-action">
+          <p>Need someone to talk to?</p>
+          <ion-button expand="block" class="action-btn" shape="round">
+            <ion-icon name="heart" slot="start"></ion-icon>
+            Visit Guidance Office
+          </ion-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-pane">
+      <div class="section-title">
+        <h3>🧘 Self-Care Tips</h3>
+      </div>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" size-md="6">
+            <div class="tip-card purple">
+              <div class="icon-circle">
+                <ion-icon name="leaf"></ion-icon>
+              </div>
+              <h4>Breathe</h4>
+              <p>Take 3 deep breaths when overwhelmed.</p>
+            </div>
+          </ion-col>
+
+          <ion-col size="6" size-md="6">
+            <div class="tip-card pink">
+              <div class="icon-circle">
+                <ion-icon name="chatbubbles"></ion-icon>
+              </div>
+              <h4>Talk to Someone</h4>
+              <p>Share your feelings with a friend.</p>
+            </div>
+          </ion-col>
+
+          <ion-col size="6" size-md="6">
+            <div class="tip-card blue">
+              <div class="icon-circle">
+                <ion-icon name="phone-portrait"></ion-icon>
+              </div>
+              <h4>Disconnect</h4>
+              <p>Take a break from social media.</p>
+            </div>
+          </ion-col>
+
+          <ion-col size="6" size-md="6">
+            <div class="tip-card green">
+              <div class="icon-circle">
+                <ion-icon name="walk"></ion-icon>
+              </div>
+              <h4>Move</h4>
+              <p>A short walk clears the mind.</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <div class="breathing-widget">
+        <div class="widget-header">
+          <ion-icon name="timer-outline"></ion-icon>
+          <h3>Try "Box Breathing"</h3>
+        </div>
+        <div class="steps-container">
+          <div class="step">
+            <div class="ring">4s</div>
+            <span class="action">Inhale</span>
+          </div>
+          <div class="connector"></div>
+          <div class="step">
+            <div class="ring">4s</div>
+            <span class="action">Hold</span>
+          </div>
+          <div class="connector"></div>
+          <div class="step">
+            <div class="ring">4s</div>
+            <span class="action">Exhale</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-footer">
+        <div class="footer-action">
+          <p>Need someone to talk to?</p>
+          <ion-button expand="block" class="action-btn" shape="round">
+            <ion-icon name="heart" slot="start"></ion-icon>
+            Visit Guidance Office
+          </ion-button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>

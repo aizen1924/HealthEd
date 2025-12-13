@@ -1,0 +1,263 @@
+// --- Variables ---
+$dark-blue: #1B3A57; // Main Theme Color
+$bg-white: #ffffff;
+$text-dark: #2A2A2A;
+
+// --- Global ---
+ion-content.mind-bg {
+  --background: #{$bg-white};
+}
+
+.custom-toolbar {
+  --background: #{$dark-blue};
+  --color: white;
+  --border-width: 0;
+  
+  ion-title { font-weight: 700; }
+}
+
+// --- Responsive Layout ---
+.responsive-wrapper {
+  display: flex;
+  flex-direction: column; 
+  width: 100%;
+  
+  // DESKTOP / WEB VIEW
+  @media (min-width: 900px) {
+    flex-direction: row; 
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    gap: 40px;
+    align-items: flex-start;
+  }
+}
+
+// --- Left Pane (Hero & Assessment) ---
+.left-pane {
+  width: 100%;
+  @media (min-width: 900px) {
+    width: 40%;
+    position: sticky;
+    top: 20px;
+  }
+}
+
+// --- Right Pane (Tools) ---
+.right-pane {
+  width: 100%;
+  @media (min-width: 900px) {
+    width: 60%;
+  }
+}
+
+// --- Hero Section ---
+.hero-section {
+  background: $dark-blue; // Solid Dark Blue
+  color: white;
+  text-align: center;
+  padding: 40px 20px 50px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-bottom: 25px;
+  position: relative;
+
+  @media (min-width: 900px) {
+    border-radius: 30px; 
+  }
+
+  .floating-icon {
+    background: rgba(255,255,255,0.15);
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .main-icon {
+    font-size: 55px;
+    color: white;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 10px;
+    letter-spacing: 0.5px;
+  }
+  p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+// --- Titles ---
+.section-title {
+  padding: 0 20px;
+  margin-bottom: 15px;
+  
+  h3 {
+    font-weight: 800;
+    color: $dark-blue; // Theme Color
+    font-size: 1.3rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+// --- Check Card ---
+.check-card {
+  border-radius: 20px;
+  margin: 0 20px 30px;
+  background: white;
+  box-shadow: none;
+  border: 1px solid #eee;
+
+  @media (min-width: 900px) { margin: 0 0 30px; }
+
+  ion-item {
+    --padding-start: 0;
+    margin-bottom: 5px;
+    --background: white;
+
+    .icon-box {
+      width: 35px; height: 35px;
+      // Light Blue background
+      background: rgba(27, 58, 87, 0.05);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-right: 15px;
+      
+      ion-icon { color: $dark-blue; font-size: 1.2rem; }
+    }
+
+    .wrap-text {
+      white-space: normal;
+      font-size: 0.95rem;
+      color: $text-dark;
+      font-weight: 500;
+    }
+  }
+}
+
+// --- Tip Cards Grid (Unified White Style) ---
+.tip-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px 15px;
+  text-align: center;
+  height: 100%;
+  // Clean border style
+  border: 1px solid #eee;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .icon-circle {
+    width: 60px; height: 60px;
+    // Transparent background
+    background: transparent;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 15px;
+    
+    ion-icon { 
+      font-size: 32px; 
+      color: $dark-blue; // Unified Icon Color
+    }
+  }
+
+  h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: $dark-blue;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+// --- Breathing Widget ---
+.breathing-widget {
+  background: white;
+  margin: 20px 10px 30px; 
+  padding: 30px 20px;
+  border-radius: 25px;
+  text-align: center;
+  // Clean border instead of dashed purple
+  border: 1px solid #eee;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  
+  @media (min-width: 900px) { margin: 20px 0 30px; } 
+
+  .widget-header {
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; margin-bottom: 20px;
+    ion-icon { color: $dark-blue; font-size: 1.4rem; }
+    h3 { margin: 0; color: $dark-blue; font-weight: 800; font-size: 1.2rem; }
+  }
+
+  .steps-container {
+    display: flex; justify-content: space-around; align-items: center;
+
+    .step {
+      display: flex; flex-direction: column; align-items: center;
+      
+      .ring {
+        width: 50px; height: 50px;
+        border-radius: 50%;
+        border: 2px solid $dark-blue;
+        display: flex; align-items: center; justify-content: center;
+        font-weight: bold; color: $dark-blue;
+        margin-bottom: 8px;
+        background: transparent;
+      }
+      .action { font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: #888; }
+    }
+
+    .connector {
+      height: 2px; flex-grow: 1;
+      background: #eee; margin: 0 10px;
+      position: relative; top: -14px; 
+    }
+  }
+}
+
+// --- Footer ---
+.footer-action {
+  padding: 10px 20px 40px;
+  text-align: center;
+  
+  p { color: $dark-blue; font-size: 0.95rem; margin-bottom: 15px; opacity: 0.7; }
+
+  .action-btn {
+    --background: #{$dark-blue};
+    --color: white;
+    font-weight: 700;
+    height: 50px;
+    --border-radius: 10px;
+    box-shadow: none;
+  }
+}
+
+// Layout visibility helpers
+.desktop-footer { display: none; }
+.mobile-footer { display: block; }
+
+@media (min-width: 900px) {
+  .desktop-footer { display: block; margin-top: 20px; }
+  .mobile-footer { display: none; }
+}

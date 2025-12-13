@@ -1,0 +1,240 @@
+// --- Variables ---
+$dark-blue: #1B3A57; // Main Theme Color
+$bg-white: #ffffff;
+$light-grey: #f4f6f8;
+
+ion-content.uti-bg {
+  --background: #{$bg-white};
+}
+
+// --- Header Styling ---
+.custom-toolbar {
+  --background: #{$dark-blue}; 
+  --color: #ffffff; // Ensures title is white
+  --border-width: 0;
+  padding-top: 5px;
+}
+
+// --- Hero Section ---
+.hero-section {
+  background: $dark-blue; // Solid Dark Blue
+  color: white;
+  padding: 20px 20px 50px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  position: relative;
+  z-index: 1;
+
+  .main-icon {
+    // Made the circle background lighter transparent white
+    background: rgba(255, 255, 255, 0.2); 
+    border-radius: 50%;
+    padding: 15px;
+    margin-bottom: 10px;
+    // Explicitly set icon to WHITE
+    color: white; 
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+  }
+
+  p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    max-width: 300px;
+    margin: 0 auto;
+    font-weight: 500;
+  }
+}
+
+// --- Info Card ---
+ion-card.info-card {
+  margin: -30px 20px 20px;
+  position: relative;
+  z-index: 2;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
+  background: white;
+  border: 1px solid #eee;
+
+  ion-card-subtitle {
+    color: $dark-blue; 
+    font-weight: 700;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  ion-card-title {
+    color: $dark-blue;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
+  ion-card-content {
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+// --- Section Titles ---
+.section-title {
+  padding: 15px 20px 10px;
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: $dark-blue; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+  }
+}
+
+// --- Warning / Symptoms List ---
+// --- Warning / Symptoms List ---
+.warning-card {
+  border-radius: 20px;
+  margin: 0 20px 20px;
+  box-shadow: none;
+  border: 1px solid #eee;
+  background: #ffffff; // Force White Card Background
+
+  // Force the inner list to be transparent or white
+  ion-list {
+    background: transparent; 
+    padding: 0;
+  }
+
+  ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    margin-bottom: 8px;
+    
+    // CRITICAL FIX: Force item background to White
+    --background: #ffffff; 
+    --ion-item-background: #ffffff;
+
+    ion-icon {
+      font-size: 22px;
+      margin-right: 15px;
+      padding: 8px;
+      border-radius: 12px;
+      color: $dark-blue;
+      background: transparent; 
+      border: 1px solid rgba(27, 58, 87, 0.1); 
+    }
+
+    ion-label {
+      strong {
+        font-size: 0.95rem;
+        color: $dark-blue; 
+      }
+      p {
+        font-size: 0.85rem;
+        color: #666;
+        margin-top: 3px;
+      }
+    }
+  }
+} 
+
+// --- Tip Cards ---
+.tip-card {
+  height: 100%;
+  border-radius: 15px; 
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: white;
+  border: 1px solid #eee;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+
+  ion-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
+    color: $dark-blue;
+  }
+
+  h4 {
+    margin: 0 0 6px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: $dark-blue; 
+  }
+
+  .small-text {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin: 0;
+    color: #555; 
+  }
+
+  &.full-width {
+    flex-direction: row;
+    text-align: left;
+    gap: 15px;
+    align-items: center;
+    background: white; // Changed from light-grey to white
+    border: 1px solid #eee;
+    
+    ion-icon { margin-bottom: 0; font-size: 32px; }
+  }
+}
+
+// --- Accordion ---
+ion-accordion-group {
+  border-radius: 16px;
+  background: white;
+  margin: 0 10px;
+  border: 1px solid #eee;
+
+  ion-item[slot="header"] {
+    --background: white;
+    --color: $dark-blue;
+    font-weight: 700;
+  }
+
+  div[slot="content"] {
+    background: #ffffff; // White background for content too
+    color: #444;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border-top: 1px solid #f0f0f0;
+  }
+}
+
+// --- Footer Action ---
+.footer-action {
+  background: white;
+  margin-top: 20px;
+  padding-bottom: 30px;
+  
+  p {
+    font-size: 0.9rem;
+    color: $dark-blue;
+    opacity: 0.7;
+    margin-bottom: 10px;
+  }
+
+  .clinic-btn {
+    --background: #{$dark-blue}; 
+    --color: white;
+    --border-radius: 10px;       
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    height: 50px;
+    box-shadow: none;           
+  }
+}

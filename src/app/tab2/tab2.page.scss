@@ -1,0 +1,225 @@
+// --- Variables ---
+$dark-blue: #1B3A57; // Header & Button Color
+$bg-white: #ffffff;  // Background
+$card-tan: #C5A57D;
+$btn-green: #1FD61F; // (Kept just in case, but unused for the main button now)
+
+// --- 1. Global Page Background ---
+ion-content.main-bg {
+  --background: #{$bg-white};
+}
+
+// --- 2. Header Styling ---
+.custom-toolbar {
+  --background: #{$dark-blue}; 
+  --color: #ffffff;
+  --border-width: 0;
+  padding-top: 5px;
+
+  .brand-logo {
+    width: 40px; height: 40px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-left: 10px; margin-right: 5px;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
+    img { width: 100%; height: 100%; object-fit: cover; }
+  }
+
+  .serif-title {
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    padding-left: 5px;
+  }
+}
+
+// --- 3. Container for Responsiveness ---
+.responsive-container {
+  min-height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 900px) {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+}
+
+// --- 4. Split Layout ---
+.split-layout {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 30px;
+  margin-top: 10px; 
+
+  @media (min-width: 900px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+  }
+}
+
+// --- 5. Left Section (Welcome) ---
+.welcome-section {
+  flex: 1;
+  color: $dark-blue; 
+  
+  .welcome-text {
+    h2 {
+      font-size: 2rem;
+      font-weight: 400;
+      margin: 0 0 15px;
+      font-family: 'Georgia', serif;
+
+      span {
+        font-weight: 800;
+        font-size: 2.5rem;
+        display: block; 
+        
+        background: linear-gradient(to right, #1B3A57 0%, #4B6389 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent; 
+      }
+    }
+    
+    p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      line-height: 1.6;
+      max-width: 400px;
+      color: $dark-blue;
+    }
+  }
+
+  .desktop-decoration {
+    display: none;
+    @media (min-width: 900px) {
+      display: block;
+      margin-top: 50px;
+      font-size: 100px;
+      color: rgba(27, 58, 87, 0.1); 
+      animation: pulse 3s infinite ease-in-out;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(1.1); }
+}
+
+// --- 6. Right Section (Info Card) ---
+.card-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  @media (min-width: 900px) {
+    justify-content: flex-end;
+  }
+}
+
+.info-card {
+  background-color: $card-tan;
+  border-radius: 30px;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  
+  &:hover { transform: translateY(-5px); }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+    pointer-events: none;
+  }
+}
+
+// --- 7. Logo Circle (Inside Card) ---
+.logo-container {
+  margin-bottom: 25px;
+  position: relative; z-index: 2;
+  
+  .logo-circle {
+    width: 110px; height: 110px;
+    background: white;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    border: 4px solid $dark-blue; 
+    overflow: hidden; 
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+    }
+  }
+}
+
+// --- 8. Card Content ---
+.card-content {
+  color: $dark-blue; 
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  text-align: left;
+  position: relative; z-index: 2;
+
+  .intro-block {
+    display: flex; align-items: center;
+    font-weight: 800;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: $dark-blue;
+    
+    ion-icon { margin-right: 8px; font-size: 1.3rem; }
+  }
+
+  p {
+    margin-bottom: 12px;
+    opacity: 0.9;
+  }
+}
+
+// --- 9. Explore Button (SIMPLIFIED) ---
+.explore-btn {
+  width: 100%;
+  --background: #{$dark-blue}; // Matches Header Color
+  --color: #ffffff;
+  --border-radius: 10px;       // Simple rounded corners
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  height: 50px;
+  box-shadow: none;            // Flat look (Removed 3D shadow)
+  position: relative; 
+  z-index: 2;
+
+  ion-icon {
+    margin-left: 10px;
+    font-size: 1.4rem;
+  }
+}

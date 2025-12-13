@@ -1,0 +1,69 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <div class="brand-logo">
+        <img src="assets/hlogo.jpg" alt="HealthEd Logo">
+      </div>
+    </ion-buttons>
+    
+    <ion-title class="serif-title">
+      HealthEd
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="main-bg">
+  
+  <div class="responsive-container">
+
+    <div class="split-layout">
+      
+      <div class="welcome-section">
+        <div class="welcome-text">
+          <h2>Welcome, <br><span>{{ userName }}!</span></h2> 
+          <p>Your journey to better health starts here. Explore medical resources and wellness guides.</p>
+        </div>
+        
+        <div class="desktop-decoration">
+          <ion-icon name="pulse-outline"></ion-icon>
+        </div>
+      </div>
+
+      <div class="card-section">
+        <div class="info-card">
+          
+          <div class="logo-container">
+            <div class="logo-circle">
+              <img src="assets/hlogo.jpg" alt="Company Logo" class="overlay-logo">
+            </div>
+          </div>
+
+          <div class="card-content">
+            <div class="intro-block">
+              <ion-icon name="information-circle"></ion-icon>
+              <span>What is HealthEd?</span>
+            </div>
+            
+            <p>
+              It is a comprehensive app designed to help you learn about health in an easy, understandable way.
+            </p>
+            
+            <p>
+              We teach users basic information to stay healthy, avoid sickness, and make smart lifestyle choices.
+            </p>
+          </div>
+
+          <div class="action-area">
+            <ion-button class="explore-btn" shape="round" (click)="openHealthGame()">
+              Start Exploring
+              <ion-icon name="arrow-forward-circle" slot="end"></ion-icon>
+            </ion-button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,240 @@
+// --- Variables ---
+$dark-blue: #1B3A57; // New Theme Color
+$bg-white: #ffffff;
+$card-tan: #C5A57D;
+$white: #ffffff;
+$text-dark: #2A2A2A;
+
+// --- Background ---
+ion-content.main-bg {
+  // Changed from gradient to solid white
+  --background: #{$bg-white};
+}
+
+// --- Header ---
+.custom-toolbar {
+  // Changed to solid Dark Blue
+  --background: #{$dark-blue}; 
+  --color: #ffffff;
+  position: relative; // Sits naturally at the top
+  z-index: 10;
+
+  .serif-title {
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+}
+
+// --- Layout Wrapper ---
+.about-wrapper {
+  display: flex;
+  flex-direction: column; 
+  min-height: 100%;
+  padding: 20px; 
+
+  // WEB VIEW
+  @media (min-width: 900px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    gap: 60px;
+  }
+}
+
+// --- Left Column: Branding ---
+.brand-column {
+  text-align: center;
+  // Changed text to Dark Blue for visibility on White
+  color: $dark-blue; 
+  margin-bottom: 30px;
+  flex: 1;
+
+  @media (min-width: 900px) {
+    text-align: right; 
+    margin-bottom: 0;
+  }
+
+  .logo-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+
+    .logo-circle {
+      width: 120px; height: 120px;
+      background: white;
+      border-radius: 50%;
+      display: flex; justify-content: center; align-items: center;
+      // Changed border to Dark Blue
+      border: 4px solid $dark-blue; 
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      overflow: hidden;
+      position: relative; z-index: 2;
+
+      img { width: 100%; height: 100%; object-fit: cover; }
+    }
+  }
+
+  h1 {
+    font-family: 'Georgia', serif;
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+  }
+
+  .tagline {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin: 5px 0 15px;
+    font-style: italic;
+  }
+
+  .version-badge {
+    font-size: 0.8rem;
+    // Changed to Dark Blue for contrast
+    background: $dark-blue; 
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+  }
+}
+
+// --- Right Column: Content ---
+.content-column {
+  flex: 1.2; 
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 600px; 
+  margin: 0 auto;
+}
+
+// --- Info Cards ---
+.info-card {
+  background: $card-tan;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1); // Softer shadow
+  color: #3e2b1e;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+  // Desktop Hover
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  // Header inside card
+  .card-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid rgba(62, 43, 30, 0.1);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+
+    .icon-box {
+      width: 35px; height: 35px;
+      background: rgba(62, 43, 30, 0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-right: 12px;
+      
+      ion-icon { font-size: 1.2rem; color: #3e2b1e; }
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 800;
+      font-family: 'Georgia', serif;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+// --- Team Section Specifics ---
+.team-card {
+  // Removed gradient for a simpler, flat look
+  background: $card-tan; 
+  
+  .dev-profile {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    
+    .avatar-ring {
+      padding: 3px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-right: 20px;
+
+      ion-avatar {
+        width: 70px; height: 70px;
+      }
+    }
+
+    .dev-info {
+      h4 {
+        margin: 0 0 4px;
+        font-weight: 900;
+        font-size: 1.3rem;
+        color: #2a1b12;
+      }
+      .role {
+        font-size: 0.9rem;
+        margin: 0 0 10px;
+        font-weight: 600;
+        color: #5d4a36;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .social-pills {
+        display: flex; gap: 8px;
+        
+        // Simpler Badges
+        ion-badge { 
+          --padding-start: 10px; 
+          --padding-end: 10px; 
+          --background: #{$dark-blue}; // Matches Theme
+          --color: white;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}
+
+// --- Footer ---
+.footer-note {
+  text-align: center;
+  color: $dark-blue; // Changed from white to Dark Blue
+  opacity: 0.6;
+  font-size: 0.8rem;
+  margin-top: 10px;
+  
+  @media(min-width: 900px) { text-align: left; padding-left: 10px; }
+}
+
+// --- Animations ---
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0; transform: translateY(20px);
+}
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}

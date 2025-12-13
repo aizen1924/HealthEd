@@ -1,0 +1,522 @@
+// --- Variables ---
+$bg-dark: #2c3e50;
+$bg-light: #f0f4f8;
+$purple-primary: #6c5ce7;
+$purple-dark: #4834d4;
+$card-radius: 20px;
+
+// --- Global Setup ---
+ion-content.game-bg {
+  // A nice subtle radial gradient for game feel
+  --background: radial-gradient(circle at center, #2b32b2 0%, #1488cc 100%);
+}
+
+.game-toolbar {
+  --background: transparent;
+  --color: white;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  
+  .game-title {
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  // New Combo Badge Style
+  // Find this section in your SCSS file
+.combo-badge {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    
+    // CHANGE THIS LINE: Increase margin to clear the button
+    margin-right: 60px; 
+    
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(255, 165, 0, 0.6);
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10; // Ensure it sits nicely
+}
+.combo-badge-center {
+    font-size: 0.8rem;
+    vertical-align: middle;
+    margin-left: 10px;
+    box-shadow: 0 2px 5px rgba(255, 165, 0, 0.5);
+    animation: popIn 0.3s ease;
+}
+  .exit-btn {
+    --background: rgba(255,255,255,0.2);
+    --color: white;
+    font-weight: bold;
+    
+    .desktop-text {
+      display: none;
+      @media(min-width: 768px) { display: inline; margin-right: 5px; }
+    }
+  }
+}
+
+// --- Responsive Wrapper (Crucial for Web) ---
+.game-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px; // Space for toolbar
+  
+  @media (min-width: 900px) {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.05); // Subtle glass effect on desktop
+    border-radius: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: calc(100% - 40px);
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+}
+
+// --- MAIN MENU ---
+.game-menu {
+  padding: 20px;
+  overflow-y: auto;
+  
+  .menu-header {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    
+    .header-icon-box {
+      width: 80px; height: 80px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(10px);
+      
+      ion-icon { font-size: 40px; }
+    }
+    
+    h1 { font-weight: 900; font-size: 2.2rem; margin: 0; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    p { opacity: 0.9; font-size: 1.1rem; }
+  }
+
+  .menu-card {
+    background: white;
+    border-radius: $card-radius;
+    padding: 30px 20px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .card-bg-decoration {
+      position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(0,0,0,0.05) 0%, transparent 60%);
+      transition: transform 0.5s;
+    }
+
+    .card-icon {
+      width: 70px; height: 70px;
+      border-radius: 20px;
+      margin: 0 auto 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 35px;
+      color: white;
+      position: relative; z-index: 2;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    // Specific Colors
+    &.trivia-card .card-icon { background: linear-gradient(135deg, #FF9966, #FF5E62); }
+    &.triage-card .card-icon { background: linear-gradient(135deg, #56CCF2, #2F80ED); }
+    &.nutri-card .card-icon { background: linear-gradient(135deg, #11998e, #38ef7d); }
+
+    .card-content {
+      position: relative; z-index: 2;
+      h2 { font-weight: 800; margin: 0 0 5px; color: #333; }
+      p { color: #666; margin: 0 0 20px; font-size: 0.9rem; }
+      
+      .play-tag {
+        display: inline-block;
+        padding: 8px 20px;
+        background: #333;
+        color: white;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+
+// --- TRIVIA MODE ---
+.trivia-mode {
+  padding: 20px;
+  display: flex; flex-direction: column; justify-content: center;
+  max-width: 800px; margin: 0 auto; width: 100%;
+
+  .status-bar {
+    color: white; margin-bottom: 20px;
+    span { display: block; margin-bottom: 8px; font-weight: bold; text-align: center; }
+    ion-progress-bar { height: 8px; border-radius: 4px; --background: rgba(255,255,255,0.2); }
+  }
+
+  .question-box {
+    background: white;
+    padding: 30px;
+    border-radius: $card-radius;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+    min-height: 150px;
+    display: flex; align-items: center; justify-content: center;
+
+    .q-text { font-size: 1.4rem; font-weight: 700; color: #2c3e50; line-height: 1.4; }
+  }
+
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr; // Mobile: 1 column
+    gap: 15px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr; // Desktop: 2 columns
+    }
+  }
+
+  .game-btn {
+    padding: 20px;
+    background: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #444;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 0 #e0e0e0; // 3D effect
+
+    &:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 0 #d0d0d0; }
+    &:active { transform: translateY(2px); box-shadow: 0 1px 0 #d0d0d0; }
+
+    &.correct { background: #2ecc71; color: white; box-shadow: 0 4px 0 #27ae60; }
+    &.wrong { background: #e74c3c; color: white; box-shadow: 0 4px 0 #c0392b; }
+  }
+
+  .feedback-overlay {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 500;
+    backdrop-filter: blur(5px);
+    border-radius: 30px; // Matches web wrapper
+
+    .feedback-card {
+      background: white;
+      padding: 40px;
+      border-radius: 30px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+      ion-icon { font-size: 60px; margin-bottom: 10px; }
+      p { font-size: 1.2rem; color: #333; font-weight: bold; margin-bottom: 20px; }
+      
+      .next-btn {
+        --color: #333;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+// --- TRIAGE MODE ---
+.triage-mode {
+  padding: 10px;
+  height: 100%;
+  
+  .scenario-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 20px;
+    color: white;
+    
+    .badge-container { display: flex; gap: 10px; }
+
+    // New Health Bar Style
+    .health-bar-container {
+        display: flex; align-items: center; gap: 8px;
+        background: rgba(0,0,0,0.3);
+        padding: 5px 12px;
+        border-radius: 20px;
+        width: 140px;
+      
+        .hp-track {
+          flex-grow: 1;
+          height: 10px;
+          background: rgba(255,255,255,0.2);
+          border-radius: 5px;
+          overflow: hidden;
+          
+          .hp-fill {
+            height: 100%;
+            background: #ff4757; // Red Health Color
+            transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+          }
+        }
+      }
+  }
+
+  // Desktop Split Layout
+  .split-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+    @media (min-width: 900px) {
+      flex-direction: row;
+      gap: 30px;
+      padding: 20px;
+    }
+  }
+
+  .visual-side {
+    flex: 1;
+    display: flex; flex-direction: column;
+    
+    .scenario-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      height: 250px;
+      
+      @media(min-width: 900px) { height: 100%; }
+
+      img { width: 100%; height: 100%; object-fit: cover; }
+      
+      .scenario-overlay {
+        position: absolute; bottom: 0; left: 0; width: 100%;
+        background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        padding: 40px 20px 20px;
+        color: white;
+        p { margin: 0; font-size: 1.1rem; line-height: 1.4; text-shadow: 0 1px 2px black; }
+      }
+    }
+  }
+
+  .interaction-side {
+    flex: 1;
+    padding-top: 20px;
+    
+    h3 { color: white; text-align: center; margin-bottom: 20px; font-weight: bold; }
+    
+    .decision-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .decision-card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      min-height: 120px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+      &:hover { transform: scale(1.03); background: #f9f9f9; }
+
+      .choice-icon {
+        background: #e3f2fd;
+        width: 50px; height: 50px;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        margin-bottom: 10px;
+        ion-icon { font-size: 24px; color: #1976d2; }
+      }
+
+      span { color: #333; font-weight: bold; font-size: 0.9rem; line-height: 1.3; }
+    }
+  }
+}
+
+// --- NUTRITION MODE ---
+.nutrition-mode {
+  display: flex; flex-direction: column; height: 100%;
+  padding: 20px;
+  overflow: hidden;
+
+  .timer-display {
+    text-align: center; color: white; font-size: 1.5rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin-bottom: 20px;
+
+    // Urgent state style
+    &.urgent {
+        color: #ff6b6b;
+        animation: pulse 0.5s infinite;
+    }
+  }
+
+  .falling-area {
+    flex-grow: 1;
+    position: relative;
+    display: flex; justify-content: center; align-items: center;
+
+    .falling-food {
+      text-align: center;
+      animation: bounce 2s infinite ease-in-out;
+      
+      // Allow re-triggering animation if class is added/removed
+      &.pop-in { animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+      .food-emoji { font-size: 7rem; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2)); }
+      .food-name { color: white; font-weight: bold; font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+    }
+  }
+
+  .instruction-text {
+    text-align: center; color: rgba(255,255,255,0.8);
+    margin-bottom: 15px; font-weight: bold;
+  }
+
+  .buckets-container {
+    display: flex; gap: 10px; justify-content: center;
+    height: 120px;
+
+    .bucket {
+      flex: 1;
+      max-width: 150px;
+      border-radius: 0 0 15px 15px;
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+      padding-bottom: 15px;
+      color: white; font-weight: 800; cursor: pointer;
+      position: relative;
+      box-shadow: inset 0 -5px 10px rgba(0,0,0,0.2);
+      transition: transform 0.1s;
+
+      &:active { transform: scale(0.95); }
+
+      .bucket-lid {
+        position: absolute; top: 0; left: -5px; right: -5px; height: 10px;
+        background: rgba(255,255,255,0.3); border-radius: 5px;
+      }
+      
+      .bucket-label { position: relative; z-index: 2; }
+
+      &.carb-bucket { background: #f39c12; border: 3px solid #e67e22; }
+      &.protein-bucket { background: #e74c3c; border: 3px solid #c0392b; }
+      &.fat-bucket { background: #27ae60; border: 3px solid #2ecc71; }
+    }
+  }
+}
+
+// --- RESULTS ---
+.results-view {
+  display: flex; align-items: center; justify-content: center; height: 100%;
+  padding: 20px;
+
+  .result-card {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    width: 100%; max-width: 450px;
+    position: relative; overflow: hidden;
+
+    h1 { color: #333; font-weight: 900; margin-bottom: 20px; }
+
+    .score-circle {
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      border: 8px solid $purple-primary;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      
+      .big-score { font-size: 3.5rem; font-weight: 900; color: $purple-primary; line-height: 1; }
+      .total-score { font-size: 1.2rem; color: #888; font-weight: bold; }
+    }
+
+    .replay-btn {
+      --background: #{$purple-primary};
+      --box-shadow: 0 4px 10px rgba(108, 92, 231, 0.4);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+// --- ANIMATIONS (Enhanced) ---
+
+// 1. Shake (Wrong Answer)
+.shake-anim {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+// 2. Pulse (Urgent Timer)
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+// 3. Pop In (Generic Entry)
+@keyframes popIn { 
+    0% { transform: scale(0.5); opacity: 0; } 
+    100% { transform: scale(1); opacity: 1; } 
+}
+
+@keyframes bounce { 
+    0%, 100% { transform: translateY(0); } 
+    50% { transform: translateY(-15px); } 
+}
+// Add this inside .feedback-overlay .feedback-card
+
+.explanation-box {
+  background: #f0f4f8;
+  padding: 15px;
+  border-radius: 15px;
+  margin-top: 15px;
+  border-left: 5px solid #6c5ce7;
+  text-align: left;
+  display: flex;
+  gap: 10px;
+  
+  ion-icon {
+    font-size: 24px;
+    color: #6c5ce7;
+    margin: 0;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #444;
+    font-weight: normal;
+    line-height: 1.4;
+  }
+}

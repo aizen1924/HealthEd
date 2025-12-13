@@ -1,0 +1,204 @@
+<ion-header [translucent]="true" class="ion-no-border">
+ <ion-toolbar class="game-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab2" (click)="quitGame()" color="light"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="game-title">
+      {{ activeGame ? activeGame.title : 'Health Arcade' }}
+      
+      <ion-badge *ngIf="activeGame && combo > 1" color="warning" class="combo-badge-center">
+        🔥 {{ combo }}x
+      </ion-badge>
+    </ion-title>
+
+    <ion-buttons slot="end">
+       </ion-buttons>
+</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="game-bg">
+  
+  <div class="game-wrapper" [class.shake-anim]="isWrongAnimation">
+
+    <div class="game-menu" *ngIf="!activeGame">
+      <div class="menu-header">
+        <div class="header-icon-box">
+          <ion-icon name="game-controller"></ion-icon>
+        </div>
+        <h1>Choose Your Challenge</h1>
+        <p>Master health skills to win!</p>
+      </div>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" size-md="6" size-lg="4">
+            <div class="menu-card trivia-card" (click)="launchGame('trivia')">
+              <div class="card-bg-decoration"></div>
+              <div class="card-icon"><ion-icon name="water"></ion-icon></div>
+              <div class="card-content">
+                <h2>Hygiene Master</h2>
+                <p>5 Questions • Learn Daily Habits</p>
+                <div class="play-tag">PLAY NOW</div>
+              </div>
+            </div>
+          </ion-col>
+
+          <ion-col size="12" size-md="6" size-lg="4">
+            <div class="menu-card triage-card" (click)="launchGame('triage')">
+              <div class="card-bg-decoration"></div>
+              <div class="card-icon"><ion-icon name="medkit"></ion-icon></div>
+              <div class="card-content">
+                <h2>First Aid Hero</h2>
+                <p>5 Scenarios • Save the Patient</p>
+                <div class="play-tag">PLAY NOW</div>
+              </div>
+            </div>
+          </ion-col>
+
+          <ion-col size="12" size-md="6" size-lg="4">
+            <div class="menu-card nutri-card" (click)="launchGame('nutrition')">
+              <div class="card-bg-decoration"></div>
+              <div class="card-icon"><ion-icon name="restaurant"></ion-icon></div>
+              <div class="card-content">
+                <h2>Pinggang Pinoy</h2>
+                <p>Speed Sort • Go, Grow, Glow</p>
+                <div class="play-tag">PLAY NOW</div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div class="game-container trivia-mode" *ngIf="activeGame?.id === 'trivia' && !showResults">
+      <div class="status-bar">
+        <span>Question {{ currentStep + 1 }} / {{ activeGameData.questions.length }}</span>
+        <ion-progress-bar [value]="(currentStep + 1) / activeGameData.questions.length" color="secondary"></ion-progress-bar>
+      </div>
+
+      <div class="question-box bounce-in">
+        <h2 class="q-text">{{ activeGameData.questions[currentStep].question }}</h2>
+      </div>
+
+      <div class="options-grid">
+        <button 
+          *ngFor="let option of activeGameData.questions[currentStep].options" 
+          class="game-btn option-btn"
+          [class.correct]="hasAnswered && option === activeGameData.questions[currentStep].answer"
+          [class.wrong]="hasAnswered && option !== activeGameData.questions[currentStep].answer && option === selectedAnswer"
+          (click)="handleTriviaAnswer(option)"
+          [disabled]="hasAnswered">
+          {{ option }}
+        </button>
+      </div>
+
+      <div class="feedback-overlay" *ngIf="hasAnswered">
+        <div class="feedback-card">
+          <ion-icon [name]="selectedAnswer === activeGameData.questions[currentStep].answer ? 'checkmark-circle' : 'close-circle'" 
+                    [color]="selectedAnswer === activeGameData.questions[currentStep].answer ? 'success' : 'danger'">
+          </ion-icon>
+          <h2>{{ feedbackMessage }}</h2>
+          
+          <div class="explanation-box">
+             <ion-icon name="bulb-outline"></ion-icon>
+             <p>{{ explanationText }}</p>
+          </div>
+
+          <ion-button expand="block" shape="round" color="dark" class="ion-margin-top" (click)="nextStep()">
+            Next <ion-icon slot="end" name="arrow-forward"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-container triage-mode" *ngIf="activeGame?.id === 'triage' && !showResults">
+      <div class="scenario-header">
+        <div class="badge-container">
+          <ion-badge color="danger">EMERGENCY</ion-badge>
+        </div>
+        <div class="health-bar-container">
+            <ion-icon name="heart" color="danger"></ion-icon>
+            <div class="hp-track">
+                <div class="hp-fill" [style.width.%]="patientHealth"></div>
+            </div>
+        </div>
+      </div>
+
+      <div class="split-view">
+        <div class="visual-side">
+          <div class="scenario-card">
+            <img [src]="activeGameData.scenarios[currentStep].image" class="scenario-img" />
+            <div class="scenario-overlay">
+              <p>{{ activeGameData.scenarios[currentStep].text }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="interaction-side">
+          <h3>What should you do?</h3>
+          <div class="decision-grid">
+            <div 
+              class="decision-card" 
+              *ngFor="let choice of activeGameData.scenarios[currentStep].choices"
+              (click)="handleTriageChoice(choice)">
+              <div class="choice-icon">
+                <ion-icon name="medkit-outline"></ion-icon>
+              </div>
+              <span>{{ choice.label }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-container nutrition-mode" *ngIf="activeGame?.id === 'nutrition' && !showResults">
+      <div class="timer-display" [class.urgent]="gameTimer <= 5">
+        <ion-icon name="timer-outline"></ion-icon>
+        <span>{{ gameTimer }}s</span>
+      </div>
+
+      <div class="falling-area">
+        <div class="falling-food pop-in">
+          <div class="food-emoji">{{ activeGameData.items[currentStep].emoji }}</div>
+          <div class="food-name">{{ activeGameData.items[currentStep].name }}</div>
+          <div class="food-info">{{ activeGameData.items[currentStep].info }}</div>
+        </div>
+      </div>
+
+      <div class="buckets-container">
+        <div class="bucket carb-bucket" (click)="handleNutritionSort('GO')">
+          <span class="bucket-label">🍚 GO</span>
+        </div>
+        <div class="bucket protein-bucket" (click)="handleNutritionSort('GROW')">
+          <span class="bucket-label">🍗 GROW</span>
+        </div>
+        <div class="bucket fat-bucket" (click)="handleNutritionSort('GLOW')">
+          <span class="bucket-label">🥦 GLOW</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-view" *ngIf="showResults">
+      <div class="result-card bounce-in">
+        <ion-icon name="trophy" color="warning" class="trophy-icon"></ion-icon>
+        <h1>{{ patientHealth <= 0 ? 'Patient Lost!' : 'Mission Complete!' }}</h1>
+        
+        <div class="score-circle">
+          <span class="big-score">{{ score }}</span>
+          <span class="total-score">/ {{ maxScore }}</span>
+        </div>
+        
+        <p class="performance-text">{{ getPerformanceText() }}</p>
+
+        <ion-button expand="block" class="replay-btn" (click)="launchGame(activeGame.id)">
+            Replay Level
+        </ion-button>
+        <ion-button expand="block" fill="clear" color="medium" (click)="quitGame()">
+            Back to Menu
+        </ion-button>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

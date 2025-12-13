@@ -1,0 +1,238 @@
+// --- Theme Variables ---
+$dark-blue: #1B3A57; // Header & Button Color
+$bg-white: #ffffff;  
+$card-tan: #C5A57D;  
+$text-dark: #2A2A2A; 
+
+// --- Main Background ---
+ion-content.main-content {
+  --background: #{$bg-white};
+  --padding-top: 10px;
+}
+
+// --- DESKTOP WRAPPER ---
+.main-wrapper {
+  max-width: 1200px; 
+  margin: 0 auto;    
+  padding-bottom: 40px;
+}
+
+// --- Header Styling ---
+.custom-toolbar {
+  --background: #{$dark-blue}; 
+  --color: #ffffff; 
+  --border-width: 0;
+  padding-top: 5px;
+
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 10px; 
+    overflow: hidden;
+    margin-left: 10px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .header-icon {
+    font-size: 24px;
+    margin-left: 10px;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+  }
+
+  .serif-title {
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+    padding-left: 5px;
+  }
+}
+
+// --- Centered Search Bar ---
+.search-toolbar {
+  padding-bottom: 10px;
+  
+  .search-container {
+    max-width: 600px; 
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .custom-search {
+    --background: rgba(255, 255, 255, 0.15); 
+    --color: #ffffff;
+    --placeholder-color: rgba(255, 255, 255, 0.7);
+    --icon-color: #ffffff;
+    --border-radius: 25px;
+    box-shadow: none;
+    padding-inline: 15px;
+  }
+}
+
+// --- Typography ---
+.welcome-container {
+  text-align: center;
+  padding: 20px;
+  color: $dark-blue;
+  
+  h2 {
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+    margin-bottom: 5px;
+  }
+  p {
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+}
+
+.section-header {
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  
+  h3 {
+    color: $dark-blue; 
+    font-family: 'Georgia', serif;
+    font-size: 1.4rem;
+    margin: 0;
+    display: inline-block;
+  }
+
+  .divider {
+    height: 4px;
+    width: 50px;
+    background: #FFD700;
+    border-radius: 2px;
+    margin-top: 5px;
+  }
+}
+
+// --- Interactive Card Styling ---
+.book-grid {
+  padding: 10px;
+}
+
+.custom-card {
+  background-color: $card-tan;
+  border-radius: 20px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  height: 100%;
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  }
+
+  .bookmark-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 10;
+    --color: #5d4a36;
+    
+    ion-icon {
+      font-size: 1.6rem;
+      transition: transform 0.2s;
+    }
+    
+    &:hover ion-icon {
+      transform: scale(1.2);
+    }
+  }
+
+  .image-wrapper {
+    width: 110px;
+    height: 150px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+  }
+  
+  &:hover .image-wrapper img {
+    transform: scale(1.05);
+  }
+
+  .card-body {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    
+    .category-badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #5d4a36; 
+      font-weight: 800;
+      background: rgba(255,255,255,0.3);
+      padding: 2px 8px;
+      border-radius: 10px;
+      align-self: center;
+      margin-bottom: 5px;
+    }
+
+    .book-title {
+      color: $text-dark;
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin: 5px 0;
+      line-height: 1.2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .book-author {
+      color: #4a4a4a;
+      font-size: 0.85rem;
+      margin-bottom: auto;
+      font-style: italic;
+      padding-bottom: 10px;
+    }
+  }
+
+  // --- UPDATED BUTTON STYLE ---
+  .explore-btn {
+    --background: #{$dark-blue}; // Changed from Green to Dark Blue
+    --color: #ffffff;
+    --border-radius: 10px;      // Simpler radius (was 25px)
+    box-shadow: none;           // Removed 3D shadow effect
+    
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    height: 40px;
+    width: 100%;
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,86 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <div class="brand-logo">
+        <img src="assets/hlogo.jpg" alt="HealthEd Logo">
+      </div>
+    </ion-buttons>
+    
+    <ion-title class="serif-title">
+      HealthEd Library
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="main-bg">
+
+  <div class="main-wrapper">
+    
+    <div class="page-intro">
+      <h1>Your Saved Books</h1>
+      <p>Your personal collection of health guides.</p>
+    </div>
+
+    <div class="empty-state" *ngIf="savedBooks.length === 0">
+      <div class="empty-card">
+        <div class="icon-circle">
+          <ion-icon name="bookmarks"></ion-icon>
+        </div>
+        <h3>No Bookmarks Yet</h3>
+        <p>Go to the Library tab to save your favorite health books!</p>
+        <ion-button routerLink="/tabs/tab1" shape="round" class="action-btn" expand="block">
+          Browse Library
+          <ion-icon name="arrow-forward" slot="end"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+    <ion-grid class="bookmarks-grid" *ngIf="savedBooks.length > 0">
+      <ion-row>
+        
+        <ion-col size="12" size-md="6" size-lg="4" *ngFor="let book of savedBooks">
+          
+          <ion-item-sliding class="sliding-card">
+            
+            <ion-item lines="none" class="bookmark-card" detail="false" (click)="openBookDetails(book.id)">
+              <div class="card-layout">
+                <div class="book-cover">
+                  <img [src]="book.image" alt="cover" />
+                </div>
+                
+                <div class="book-info">
+                  <span class="category-tag">{{ book.category }}</span>
+                  <h2 class="book-title">{{ book.title }}</h2>
+                  <p class="book-author">by {{ book.author }}</p>
+                  
+                  <div class="card-actions">
+                    <ion-button fill="clear" size="small" class="read-link">
+                      Read Now <ion-icon name="arrow-forward"></ion-icon>
+                    </ion-button>
+                  </div>
+                </div>
+
+                <ion-button 
+                  fill="clear" 
+                  class="quick-delete-btn" 
+                  (click)="removeBookmark(book.id); $event.stopPropagation()">
+                  <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-item>
+
+            <ion-item-options side="end">
+              <ion-item-option class="delete-slide-option" (click)="removeBookmark(book.id)">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+
+          </ion-item-sliding>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+</ion-content>

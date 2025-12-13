@@ -1,0 +1,121 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1" text="" icon="arrow-back-circle"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Fight Malnutrition</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="nutri-bg">
+  
+  <div class="web-container">
+
+    <div class="hero-section">
+      <div class="hero-content">
+        <div class="icon-blob">
+          <ion-icon name="nutrition" class="main-icon"></ion-icon>
+        </div>
+        <div class="hero-text">
+          <h1>Eat Right, Live Bright!</h1>
+          <p>Nutrition is the key to a strong body and sharp mind.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="section-header">
+        <h3>🍽️ The 3 G's of Nutrition</h3>
+        <p>Make sure every meal has all three!</p>
+      </div>
+
+      <ion-grid>
+        <ion-row>
+          
+          <ion-col size="12" size-md="4">
+            <div class="food-card go-card">
+              <div class="card-icon">
+                <ion-icon name="bicycle"></ion-icon>
+              </div>
+              <div class="card-text">
+                <h2>GO Foods</h2>
+                <span class="subtitle">Energy Givers</span>
+                <p>Rice, Bread, Pasta, Corn, Root Crops</p>
+              </div>
+            </div>
+          </ion-col>
+
+          <ion-col size="12" size-md="4">
+            <div class="food-card grow-card">
+              <div class="card-icon">
+                <ion-icon name="body"></ion-icon>
+              </div>
+              <div class="card-text">
+                <h2>GROW Foods</h2>
+                <span class="subtitle">Body Builders</span>
+                <p>Chicken, Meat, Fish, Eggs, Milk, Beans</p>
+              </div>
+            </div>
+          </ion-col>
+
+          <ion-col size="12" size-md="4">
+            <div class="food-card glow-card">
+              <div class="card-icon">
+                <ion-icon name="shield-checkmark"></ion-icon>
+              </div>
+              <div class="card-text">
+                <h2>GLOW Foods</h2>
+                <span class="subtitle">Body Protectors</span>
+                <p>Fruits, Vegetables, Squash, Malunggay</p>
+              </div>
+            </div>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+
+      <div class="divider"></div>
+
+      <div class="section-header">
+        <h3>🚫 Foods to Avoid</h3>
+        <p>Limit these to stay healthy</p>
+      </div>
+      
+      <div class="junk-grid">
+        <div class="junk-item">
+          <div class="circle-warn">
+            <ion-icon name="fast-food"></ion-icon>
+          </div>
+          <span>Junk Food</span>
+        </div>
+        <div class="junk-item">
+          <div class="circle-warn">
+            <ion-icon name="beer"></ion-icon>
+          </div>
+          <span>Soft Drinks</span>
+        </div>
+        <div class="junk-item">
+          <div class="circle-warn">
+            <ion-icon name="ice-cream"></ion-icon>
+          </div>
+          <span>Too Much Sweets</span>
+        </div>
+      </div>
+
+      <div class="footer-action">
+        <ion-card class="tip-card">
+          <ion-card-content>
+            <div class="tip-flex">
+              <ion-icon name="bulb" color="warning"></ion-icon>
+              <div>
+                <strong>Nutri-Tip:</strong> Breakfast is the most important meal of the day. Never skip it!
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,235 @@
+// --- Variables ---
+$dark-blue: #1B3A57; // Main Theme Color
+$bg-white: #ffffff;
+$text-dark: #2A2A2A;
+
+// --- Global ---
+ion-content.nutri-bg {
+  --background: #{$bg-white};
+}
+
+.custom-toolbar {
+  --background: #{$dark-blue};
+  --color: white;
+  --border-width: 0;
+  
+  ion-title {
+    font-weight: 700;
+  }
+}
+
+// --- Web Container ---
+.web-container {
+  width: 100%;
+  margin: 0 auto;
+  
+  @media (min-width: 900px) {
+    max-width: 1100px;
+    padding: 20px;
+  }
+}
+
+// --- Hero Section ---
+.hero-section {
+  background: $dark-blue; // Solid Dark Blue
+  color: white;
+  text-align: center;
+  padding: 40px 20px 50px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-bottom: 30px;
+  position: relative;
+
+  @media (min-width: 900px) {
+    border-radius: 30px; 
+    padding: 60px 20px;
+  }
+
+  .icon-blob {
+    background: rgba(255, 255, 255, 0.15);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+  }
+
+  .main-icon {
+    font-size: 50px;
+    color: white;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 10px;
+  }
+  p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin: 0;
+  }
+}
+
+.content-wrapper {
+  padding: 0 10px;
+  @media (min-width: 900px) { padding: 0; }
+}
+
+// --- Section Headers ---
+.section-header {
+  text-align: center;
+  margin-bottom: 25px;
+
+  h3 {
+    font-weight: 800;
+    color: $dark-blue; // Theme Color
+    font-size: 1.4rem;
+    margin: 0 0 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  p {
+    color: #666;
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+
+// --- Food Cards (Unified Style) ---
+.food-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 10px; 
+  display: flex;
+  align-items: center; 
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03); // Subtle shadow
+  border: 1px solid #eee; // Clean border
+  height: 100%; 
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+    background: transparent; // Removed colored backgrounds
+    border: 1px solid rgba(27, 58, 87, 0.1); // Subtle border
+    
+    ion-icon {
+      font-size: 32px;
+      color: $dark-blue; // Unified Icon Color
+    }
+  }
+
+  .card-text {
+    h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: $dark-blue;
+    }
+    .subtitle {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      margin-bottom: 6px;
+      display: block;
+      color: $dark-blue;
+      opacity: 0.7;
+    }
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.4;
+    }
+  }
+}
+
+.divider {
+  height: 1px;
+  background: #eee;
+  margin: 30px 20px;
+}
+
+// --- Junk Food Section (Simplified) ---
+.junk-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; 
+  margin-bottom: 40px;
+
+  .junk-item {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    width: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: none;
+    border: 1px solid #eee; // Clean border
+
+    @media (min-width: 768px) {
+      width: 150px;
+    }
+
+    .circle-warn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(27, 58, 87, 0.05); // Very light blue
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+
+      ion-icon {
+        font-size: 24px;
+        color: $dark-blue; // Unified Color
+      }
+    }
+    
+    span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: $text-dark;
+      text-align: center;
+    }
+  }
+}
+
+// --- Tip Footer ---
+.tip-card {
+  margin: 0 20px 40px;
+  background: white; // Changed from yellow
+  color: $dark-blue;
+  border-radius: 15px;
+  box-shadow: none;
+  border: 1px solid #eee;
+
+  .tip-flex {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    
+    ion-icon {
+      font-size: 1.8rem;
+      color: $dark-blue;
+    }
+  }
+}

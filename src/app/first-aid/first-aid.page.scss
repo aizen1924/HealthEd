@@ -1,0 +1,260 @@
+// --- Variables ---
+$dark-blue: #1B3A57; // Main Theme Color
+$bg-white: #ffffff;
+$text-dark: #2A2A2A;
+$danger-red: #e74c3c; // Kept for emergency icons only
+
+// --- Global Setup ---
+ion-content.aid-bg {
+  --background: #{$bg-white};
+}
+
+.custom-toolbar {
+  --background: #{$dark-blue};
+  --color: white;
+  --border-width: 0;
+  
+  ion-title {
+    font-weight: 700;
+  }
+}
+
+// --- Responsive Layout Wrapper ---
+.web-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  
+  @media (min-width: 900px) {
+    max-width: 1200px;
+    padding: 20px;
+  }
+}
+
+.responsive-layout {
+  display: flex;
+  flex-direction: column; 
+  gap: 20px;
+
+  @media (min-width: 900px) {
+    flex-direction: row; 
+    align-items: flex-start;
+  }
+}
+
+// --- Left Panel ---
+.side-panel {
+  width: 100%;
+  
+  @media (min-width: 900px) {
+    width: 35%; 
+    position: sticky;
+    top: 20px; 
+  }
+}
+
+// --- Right Panel ---
+.main-panel {
+  width: 100%;
+  padding: 0 10px;
+
+  @media (min-width: 900px) {
+    width: 65%;
+    padding: 0;
+  }
+}
+
+// --- Hero Section ---
+.hero-section {
+  background: $dark-blue; // Solid Dark Blue
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-bottom: 25px;
+  position: relative;
+  overflow: hidden;
+
+  @media (min-width: 900px) {
+    border-radius: 30px; 
+  }
+
+  // Animation effect
+  .pulse-ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.1);
+    animation: pulse 2s infinite;
+  }
+
+  .main-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+    color: white;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 5px;
+    letter-spacing: 0.5px;
+    position: relative; z-index: 2;
+  }
+  
+  p {
+    opacity: 0.9;
+    margin: 0;
+    font-size: 1rem;
+    position: relative; z-index: 2;
+  }
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}
+
+// --- Section Labels ---
+.section-label {
+  padding: 0 20px;
+  margin-bottom: 15px;
+  
+  h3 {
+    font-weight: 800;
+    color: $dark-blue; // Theme Color
+    font-size: 1.3rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+// --- Emergency Card ---
+.emergency-card {
+  border-radius: 20px;
+  margin: 0 20px 20px;
+  background: white;
+  box-shadow: none;
+  border: 1px solid #eee;
+
+  @media (min-width: 900px) {
+    margin: 0 0 20px; 
+  }
+
+  .emergency-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    --background: white;
+    
+    .icon-circle {
+      width: 40px;
+      height: 40px;
+      background: rgba(231, 76, 60, 0.1); // Light Red for emergency context
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      
+      ion-icon {
+        color: $danger-red;
+        font-size: 1.2rem;
+      }
+      
+      &.alert {
+        background: rgba(243, 156, 18, 0.1); // Light Orange
+        ion-icon { color: #e67e22; }
+      }
+    }
+    
+    h2 {
+      font-weight: 700;
+      font-size: 1rem;
+      color: $text-dark;
+    }
+    p {
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 2px;
+    }
+    .arrow {
+      opacity: 0.3;
+      font-size: 1rem;
+    }
+  }
+}
+
+// --- Aid Cards (Treatments) - Unified Style ---
+.aid-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  margin: 0 10px 15px; 
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  border: 1px solid #eee; // Clean border
+  transition: all 0.3s ease;
+  height: 95%; 
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-header-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+    .icon-box {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      flex-shrink: 0;
+      // Replaced gradients with transparent/outline style
+      background: transparent;
+      border: 1px solid rgba(27, 58, 87, 0.1); 
+
+      ion-icon {
+        font-size: 26px;
+        color: $dark-blue; // Unified Dark Blue Icon
+      }
+    }
+
+    h4 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: $dark-blue; // Theme Color
+    }
+  }
+
+  .text-box {
+    ul {
+      padding-left: 18px;
+      margin: 0;
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.6;
+
+      li {
+        margin-bottom: 6px;
+        position: relative;
+        padding-left: 5px;
+        
+        &::marker {
+          color: $dark-blue; // Bullet point color
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

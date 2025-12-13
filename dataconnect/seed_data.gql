@@ -1,0 +1,116 @@
+mutation CreateDemoData @transaction @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      displayName: "demouser1",
+      createdAt: "2024-04-01T00:00:00Z",
+      email: "demouser1@example.com",
+      photoUrl: "https://example.com/demouser1.jpg"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      displayName: "demouser2",
+      createdAt: "2024-04-01T00:00:00Z",
+      email: "demouser2@example.com",
+      photoUrl: "https://example.com/demouser2.jpg"
+    }
+  ])
+  movie_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440002",
+      title: "Inception",
+      year: 2010,
+      createdAt: "2024-04-01T00:00:00Z",
+      genres: ["sci-fi", "action"],
+      runtime: 148,
+      summary: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO."
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440003",
+      title: "The Matrix",
+      year: 1999,
+      createdAt: "2024-04-01T00:00:00Z",
+      genres: ["sci-fi", "action"],
+      runtime: 136,
+      summary: "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers."
+    }
+  ])
+  movieList_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440004",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      name: "My Favorite Movies",
+      description: "A list of my favorite movies of all time.",
+      isPublic: true,
+      createdAt: "2024-04-01T00:00:00Z",
+      updatedAt: "2024-04-01T00:00:00Z"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440005",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      name: "Action Movies",
+      description: "A list of action movies.",
+      isPublic: false,
+      createdAt: "2024-04-01T00:00:00Z",
+      updatedAt: "2024-04-01T00:00:00Z"
+    }
+  ])
+  movieListEntry_insertMany(data: [
+    {
+      movieListId: "550e8400-e29b-41d4-a716-446655440004",
+      movieId: "550e8400-e29b-41d4-a716-446655440002",
+      position: 1,
+      note: "One of my all-time favorites!"
+    },
+    {
+      movieListId: "550e8400-e29b-41d4-a716-446655440005",
+      movieId: "550e8400-e29b-41d4-a716-446655440003",
+      position: 1,
+      note: "A classic action movie."
+    }
+  ])
+  watch_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440006",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      movieId: "550e8400-e29b-41d4-a716-446655440002",
+      createdAt: "2024-04-01T00:00:00Z",
+      watchDate: "2024-04-01",
+      location: "Home"
+    },
+        {
+      id: "550e8400-e29b-41d4-a716-446655440007",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      movieId: "550e8400-e29b-41d4-a716-446655440003",
+      createdAt: "2024-04-01T00:00:00Z",
+      watchDate: "2024-04-01",
+      location: "Theater"
+    }
+  ])
+  review_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440008",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      movieId: "550e8400-e29b-41d4-a716-446655440002",
+      watchId: "550e8400-e29b-41d4-a716-446655440006",
+      createdAt: "2024-04-01T00:00:00Z",
+      rating: 5,
+      review: "Amazing movie!",
+      updatedAt: "2024-04-01T00:00:00Z",
+      isPublic: true,
+      shareLink: "https://example.com/review1"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440009",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      movieId: "550e8400-e29b-41d4-a716-446655440003",
+      watchId: "550e8400-e29b-41d4-a716-446655440007",
+      createdAt: "2024-04-01T00:00:00Z",
+      rating: 4,
+      review: "Good action movie.",
+      updatedAt: "2024-04-01T00:00:00Z",
+      isPublic: false,
+      shareLink: "https://example.com/review2"
+    }
+  ])
+}

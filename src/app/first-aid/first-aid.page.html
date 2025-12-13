@@ -1,0 +1,127 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1" text="" icon="arrow-back-circle"></ion-back-button>
+    </ion-buttons>
+    <ion-title>First Aid Guide</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="aid-bg">
+  
+  <div class="web-wrapper">
+    
+    <div class="responsive-layout">
+      
+      <div class="side-panel">
+        <div class="hero-section">
+          <div class="pulse-ring"></div>
+          <ion-icon name="medkit" class="main-icon"></ion-icon>
+          <h1>Emergency Ready</h1>
+          <p>Know what to do before help arrives.</p>
+        </div>
+
+        <div class="emergency-container">
+          <div class="section-label">
+            <h3>🚑 Emergency Actions</h3>
+          </div>
+          
+          <ion-card class="emergency-card">
+            <ion-card-content>
+              <ion-item lines="full" class="emergency-item">
+                <div class="icon-circle">
+                  <ion-icon name="call"></ion-icon>
+                </div>
+                <ion-label>
+                  <h2>School Clinic</h2>
+                  <p>Dial 101 / G-Floor</p>
+                </ion-label>
+                <ion-icon name="chevron-forward" slot="end" color="medium" class="arrow"></ion-icon>
+              </ion-item>
+              
+              <ion-item lines="none" class="emergency-item">
+                <div class="icon-circle alert">
+                  <ion-icon name="alert"></ion-icon>
+                </div>
+                <ion-label>
+                  <h2>National Hotline</h2>
+                  <p>Dial 911</p>
+                </ion-label>
+                <ion-icon name="chevron-forward" slot="end" color="medium" class="arrow"></ion-icon>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+
+      <div class="main-panel">
+        <div class="section-label">
+          <h3>🩹 Quick Treatments</h3>
+          
+        </div>
+
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            
+            <ion-col size="12" size-md="6">
+              <div class="aid-card">
+                <div class="card-header-row">
+                  <div class="icon-box red">
+                    <ion-icon name="bandage"></ion-icon>
+                  </div>
+                  <h4>Cuts & Scrapes</h4>
+                </div>
+                <div class="text-box">
+                  <ul>
+                    <li>Clean with water and mild soap.</li>
+                    <li>Apply pressure to stop bleeding.</li>
+                    <li>Cover with a clean bandage.</li>
+                  </ul>
+                </div>
+              </div>
+            </ion-col>
+
+            <ion-col size="12" size-md="6">
+              <div class="aid-card">
+                <div class="card-header-row">
+                  <div class="icon-box orange">
+                    <ion-icon name="water"></ion-icon>
+                  </div>
+                  <h4>Nosebleed</h4>
+                </div>
+                <div class="text-box">
+                  <ul>
+                    <li>Sit down and lean forward slightly.</li>
+                    <li>Pinch the soft part of the nose.</li>
+                    <li>Breathe through mouth (10 mins).</li>
+                  </ul>
+                </div>
+              </div>
+            </ion-col>
+
+            <ion-col size="12" size-md="6">
+              <div class="aid-card">
+                <div class="card-header-row">
+                  <div class="icon-box yellow">
+                    <ion-icon name="flame"></ion-icon>
+                  </div>
+                  <h4>Minor Burns</h4>
+                </div>
+                <div class="text-box">
+                  <ul>
+                    <li>Run cool (not cold) water.</li>
+                    <li>Do <strong>NOT</strong> apply ice or oil.</li>
+                    <li>Cover loosely with sterile gauze.</li>
+                  </ul>
+                </div>
+              </div>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>
