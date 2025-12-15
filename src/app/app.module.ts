@@ -20,7 +20,7 @@ import { environment } from '../environments/environment';
     IonicModule.forRoot(),
     AppRoutingModule,
     
-    // Initialize Firebase with your config
+    // Initialize Firebase with the config you just pasted
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule
